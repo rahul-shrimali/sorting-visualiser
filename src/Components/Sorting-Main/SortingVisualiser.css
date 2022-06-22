@@ -1,18 +1,48 @@
 .bar-block{
-    position : absolute;
-    left: 5% ;
-    bottom: 10%;
+    display: flex;
+    justify-content: center;
+    margin-top: 3%;
+    align-items: baseline;
 }
 
 .array-bars{
     display: inline-block;
-    /* position: relative;
-    top: 50px; */
     margin: 0 1px;
     width: 3px;
 }
 
+.Navbar{
+    height: fit-content;
+    background-color: rgb(30, 30, 30);
+    display: flex;
+}
+
 .button{
+    margin: 1px 5px;
+    height: 30px;
+    background-color: white;
+    border-radius: 5px;
+}
+
+#first{
+    font-weight: bold;
+    background-color: rgb(30, 30, 30);
+    color: white;
+    border: 0px;
+}
+
+#sizeBox{
+    width: 100px;
+    border: 0px;
+    border-radius: 5px;
     margin: 5px;
-    
+    text-align: right;
+    justify-content: left;
+    align-self: flex-end;
+    margin-left: auto;
+}
+
+
+.last{
+    margin-right: 5%;
 }

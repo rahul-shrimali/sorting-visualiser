@@ -7,29 +7,32 @@ import QuickSort from "../Sorting-Algo/QuickSort";
 import "./SortingVisualiser.css";
 
 const SortingVisualiser = () => {
-  const arraySize = 200;
-  const speed = 15;
+  // const arraySize = 200;
+  const [arraySize, setArraySize] = useState(200)
+  
+  const speed = 3000/arraySize;
+  // console.log(speed)
   const startColor = 'white';
   const finalColor = 'green';
   const swapColor = 'red';
-  useEffect(() => intialiseArray(arraySize), []);
-
+  const [temp, setTemp] = useState(200)
   const [array, setArray] = useState([]);
-  const intialiseArray = (size) => {
+  // console.log(arraySize);
+  const intialiseArray = (size = arraySize) => {
     let arr = [];
     for (let i = 0; i < size; i++) {
       let num = 2 * Math.floor(190 * Math.random() + 20);
       arr.push(num);
     }
     setArray(arr);
-  };
-  const resetArray = () => {
-    intialiseArray(arraySize);
     const arrayBars = document.getElementsByClassName("array-bars");
     for (let i = 0; i < arrayBars.length; i++) {
       arrayBars[i].style.backgroundColor = startColor;
     }
   };
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  useEffect(() => intialiseArray(arraySize), []);
+  
   const mergeSort = () => {
     
     let animations = MergeSort(array, 0, arraySize - 1);
@@ -193,27 +196,44 @@ const SortingVisualiser = () => {
       }, i*speed);
     }
   };
+  const handleChange = (event)=>{
+      setTemp(event.target.value)
+      // console.log(temp);
+  }
 
+  const resizeArray = ()=>{
+    console.log(temp);
+    setArraySize(temp)
+    intialiseArray(temp)
+
+  }
   return (
     <>
-      <button className="button" onClick={mergeSort}>
-        MergeSort
-      </button>
-      <button className="button" onClick={quickSort}>
-        Quick Sort
-      </button>
-      <button className="button" onClick={heapSort}>
-        Heap Sort
-      </button>
-      <button className="button" onClick={bubbleSort}>
-        Bubble Sort
-      </button>
-      <button className="button" onClick={insertionSort}>
-        Insertion Sort
-      </button>
-      <button className="button" onClick={resetArray}>
-        Reset Array
-      </button>
+      <div className="Navbar">
+        <button className="button" id="first">
+          Sorting Visualiser
+        </button>
+        <button className="button" onClick={mergeSort}>
+          MergeSort
+        </button>
+        <button className="button" onClick={quickSort}>
+          Quick Sort
+        </button>
+        <button className="button" onClick={heapSort}>
+          Heap Sort
+        </button>
+        <button className="button" onClick={bubbleSort}>
+          Bubble Sort
+        </button>
+        <button className="button" onClick={insertionSort}>
+          Insertion Sort
+        </button>
+        
+        <input type="number"  id = "sizeBox" value={temp} onChange={handleChange} />
+        <button className="button last" onClick={resizeArray}>
+          Reset Array
+        </button>
+      </div>
       <div className="bar-block">
         {array.map((value, index) => {
           return (
