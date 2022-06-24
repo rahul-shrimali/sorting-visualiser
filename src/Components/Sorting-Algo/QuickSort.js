@@ -1,5 +1,5 @@
 const split =(array, start, end, animation)=>{
-    if(start == end){
+    if(start === end){
         animation.push([start, end])
         animation.push([start, end, array[start], array[start]])
         animation.push([start])

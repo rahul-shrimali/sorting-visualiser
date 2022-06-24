@@ -4,6 +4,8 @@ import HeapSort from "../Sorting-Algo/HeapSort";
 import InsertionSort from "../Sorting-Algo/InsertionSort";
 import MergeSort from "../Sorting-Algo/MergeSort";
 import QuickSort from "../Sorting-Algo/QuickSort";
+
+ 
 import "./SortingVisualiser.css";
 
 const SortingVisualiser = () => {
@@ -199,6 +201,7 @@ const SortingVisualiser = () => {
   const handleChange = (event)=>{
       setTemp(event.target.value)
       // console.log(temp);
+      resizeArray()
   }
 
   const resizeArray = ()=>{
@@ -228,11 +231,12 @@ const SortingVisualiser = () => {
         <button className="button" onClick={insertionSort}>
           Insertion Sort
         </button>
-        
-        <input type="number"  id = "sizeBox" value={temp} onChange={handleChange} />
         <button className="button last" onClick={resizeArray}>
-          Reset Array
+           Array size {arraySize}
         </button>
+        <input type="range" min="10" max="250" class="slider" step={10} id="myRange" value={temp}  onChange={handleChange}/>
+       
+        
       </div>
       <div className="bar-block">
         {array.map((value, index) => {
@@ -240,7 +244,7 @@ const SortingVisualiser = () => {
             <div
               className="array-bars"
               key={index}
-              style={{ height: `${value}px`, backgroundColor: startColor }}
+              style={{ height: `${value}px`, backgroundColor: startColor , width: `${600/arraySize}px`}}
             ></div>
           );
         })}
