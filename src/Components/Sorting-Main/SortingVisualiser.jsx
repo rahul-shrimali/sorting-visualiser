@@ -22,7 +22,8 @@ const SortingVisualiser = () => {
   // console.log(arraySize);
   const intialiseArray = (size = arraySize) => {
     let arr = [];
-    for (let i = 0; i < size; i++) {
+    arr.push(420)
+    for (let i = 0; i < size - 1; i++) {
       let num = 2 * Math.floor(190 * Math.random() + 20);
       arr.push(num);
     }
